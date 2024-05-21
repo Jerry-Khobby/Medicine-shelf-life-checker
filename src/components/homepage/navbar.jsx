@@ -25,7 +25,7 @@ const Navbar = () => {
       justifyContent:"space-evenly",
       paddingRight:"20rem"
       }}>
-      <div className=''>
+      <div className='pl-3'>
         <h1 className='text-2xl font-mono font-semibold'>MediCheck Overview</h1>
       </div>
       <div style={{
@@ -70,7 +70,7 @@ const Navbar = () => {
         </Button>
       </Tooltip>
     </div>
-      <div>
+      <div className='pr-3'>
         <UserIcon/>
       </div>
     </div>
