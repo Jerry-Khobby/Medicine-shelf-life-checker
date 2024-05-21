@@ -41,11 +41,14 @@ setIsSideopen(!isSidebarOpen);
         </div>
         </div>
         {/** side bar overlay */}
-        {isSidebarOpen&&(
-          <div>
-            
-          </div>
+        {isSidebarOpen&&(<div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-999" onClick={closeSidebar}></div>
         )}
+        <div className={`fixed top-0 left-0 w-64 h-full bg-white z-1000 transition-transform transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} overflow-y-auto shadow-lg`}>
+        <div className="flex justify-between items-center p-4 border-b border-gray-300">
+          <h2>Features</h2>
+          <IoMdClose size={24} onClick={closeSidebar} className="cursor-pointer" />
+        </div>
+        </div>
     </div>
 
    );
