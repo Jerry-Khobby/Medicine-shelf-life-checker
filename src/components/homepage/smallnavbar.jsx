@@ -1,10 +1,23 @@
-import React from 'react'
+"use client";
+import React,{useState} from 'react'
 import UserIcon from './usericon';
+import { GiHamburgerMenu } from "react-icons/gi";
+import { IoMdClose } from "react-icons/io";
 
 
 
 const SmallViewNavbar = () => {
+  const [isSidebarOpen,setIsSideopen]=useState(false);
+
+  const toggleSidebar=()=>{
+setIsSideopen(!isSidebarOpen);
+  }
+
+  const closeSidebar=()=>{
+    setIsSideopen(false);
+  }
   return ( 
+    <div>
     <div
     style={{
       borderBottom:"2px solid #ccc",
@@ -16,15 +29,25 @@ const SmallViewNavbar = () => {
       display:"flex",
       alignItems:"center",
       justifyContent:"space-evenly",
-      paddingRight:"18rem"
       }}>
-        <div>{/** this is where I want my hamburger */}</div>
-        <div>{/** the name of the company  */}</div>
+        <div>
+        <GiHamburgerMenu size={25} onClick={toggleSidebar}/>
+        </div>
+        <div>
+          <h2 className='text-2xl font-mono font-semibold'>MediCheckOverview</h2>
+          </div>
         <div>
           <UserIcon/>
         </div>
-
         </div>
+        {/** side bar overlay */}
+        {isSidebarOpen&&(
+          <div>
+            
+          </div>
+        )}
+    </div>
+
    );
 }
  
