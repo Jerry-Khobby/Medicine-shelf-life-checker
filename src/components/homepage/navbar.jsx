@@ -23,7 +23,7 @@ const Navbar = () => {
       display:"flex",
       alignItems:"center",
       justifyContent:"space-evenly",
-      paddingRight:"20rem"
+      paddingRight:"18rem"
       }}>
       <div className='pl-3'>
         <h1 className='text-2xl font-mono font-semibold'>MediCheck Overview</h1>

@@ -44,7 +44,7 @@ const SideBar = () => {
           Scan Barcode
         </li>
       </ul>
-      <ul className='space-y-4'>
+      <ul className='space-y-4 pb-11'>
         <li className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
           <FaCog className='mr-3 text-black' />
           App Settings
