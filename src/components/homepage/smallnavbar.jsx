@@ -58,7 +58,7 @@ setIsSideopen(!isSidebarOpen);
         )}
         {/** sidebar */}
         <div className={`fixed top-0 left-0 w-64 h-full bg-white z-1000 transition-transform transform pt-16 px-5 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} overflow-y-auto shadow-lg`}>
-        <div className="flex  items-center pb-8 border-b border-gray-300 flex-row">
+        <div className="flex  items-center pb-5 border-b border-gray-300 flex-row">
         <FaComments className='mr-3 text-black' size={35} />
           <h2>Features</h2>
         </div>
