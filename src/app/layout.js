@@ -20,13 +20,10 @@ export default function RootLayout({ children }) {
     const handleResize = () => {
       setIsMobileView(window.innerWidth <= 480 || window.innerWidth <= 393);
     };
-
     // Set initial state based on current window size
     handleResize();
-
     // Add event listener to update state on resize
     window.addEventListener('resize', handleResize);
-
     // Clean up event listener on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -41,7 +38,7 @@ export default function RootLayout({ children }) {
           <div className={`flex-1 ${isMobileView ? '' : 'ml-64 pr-36'}`}>
             {!isMobileView && <Navbar />}
             {isMobileView && <SmallViewNavbar />}
-            <div className={isMobileView ? '' : 'mt-16'}>
+            <div className={isMobileView ? 'mt-0 flex flex-col' : 'mt-16'}>
               {children}
             </div>
           </div>

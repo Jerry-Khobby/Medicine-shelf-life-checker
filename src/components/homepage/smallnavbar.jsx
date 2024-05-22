@@ -24,7 +24,7 @@ setIsSideopen(!isSidebarOpen);
     setIsSideopen(false);
   }
   return ( 
-    <div>
+    <div className=''>
     <div
     style={{
       borderBottom:"2px solid #ccc",
@@ -42,9 +42,9 @@ setIsSideopen(!isSidebarOpen);
         <GiHamburgerMenu size={25} onClick={toggleSidebar}/>
         </div>
         <div>
-        <div className='flex flex-row items-center justify-center gap-2'>
+        <div className='flex flex-row items-center justify-center gap-2 cursor-pointer'>
           <img src="https://static.vecteezy.com/system/resources/thumbnails/002/685/731/small/medical-caduceus-symbol-design-illustration-eps-format-suitable-for-your-design-needs-logo-illustration-animation-etc-vector.jpg" alt="Logo " height={30} width={30}/>
-          <h2 className='text-lg font-mono font-semibold'>MediCheck overview</h2>
+          <h2 className='text-lg font-mono font-semibold cursor-pointer'>MediCheck overview</h2>
           </div> 
         </div>
         <div>
