@@ -1,40 +1,21 @@
-"use client"
-import React,{useState}from 'react';
+'use client'
+import React, { useState } from 'react';
 import { Button, Tooltip } from '@mui/material';
-import UserIcon from './usericon';
 
+const Search = () => {
+  const [searchValue, setSearchValue] = useState("");
 
-
-const Navbar = () => {
-  const [searchValue,setSearchValue] = useState("");
+  // Function to handle the live search as you type
   const handleSearch = (e) => {
     const inputValue = e.target.value;
     setSearchValue(inputValue); // Update searchItem directly with the input value
   };
-  return (  
-    <div
-    style={{
-      borderBottom:"2px solid #ccc",
-      backgroundColor:"white",
-      zIndex:"1000",
-      height:"60px",
-      position:'fixed',
-      width:"100%",
-      display:"flex",
-      alignItems:"center",
-      justifyContent:"space-evenly",
-      paddingRight:"18rem"
-      }}>
-      <div className='pl-3'>
-          <img src="https://static.vecteezy.com/system/resources/thumbnails/002/685/731/small/medical-caduceus-symbol-design-illustration-eps-format-suitable-for-your-design-needs-logo-illustration-animation-etc-vector.jpg" alt="Logo " height={50} width={50}/>
-      </div>
-      <div>
-        <h1 className='text-2xl font-mono font-semibold'>MediCheck Overview</h1>
-      </div>
-      <div style={{
+
+  return (
+    <div style={{
       display: "flex",
       alignItems: "center",
-      width: "50%",
+      width: "100%",
       height: "40px",
       overflow: "hidden",
       outline: "none",
@@ -73,11 +54,7 @@ const Navbar = () => {
         </Button>
       </Tooltip>
     </div>
-      <div className='pr-3'>
-        <UserIcon/>
-      </div>
-    </div>
   );
-}
- 
-export default Navbar;
+};
+
+export default Search;

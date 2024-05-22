@@ -12,7 +12,7 @@ const UserIcon = () => {
     <div style={{
       display: "flex",
       justifyContent: "flex-end",
-      gap: '10px'
+      gap: '2px'
     }}>
       <div
         style={{
