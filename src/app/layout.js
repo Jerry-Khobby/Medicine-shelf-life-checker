@@ -5,6 +5,7 @@ import SideBar from '@/components/homepage/sidebar';
 import SmallViewNavbar from '@/components/homepage/smallnavbar';
 import { Inter } from "next/font/google";
 import "./globals.css";
+import ProductsLoaderSkeleton from '@/components/skeleton'; // Import your loader skeleton component
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,34 +16,52 @@ const metadata = {
 
 export default function RootLayout({ children }) {
   const [isMobileView, setIsMobileView] = useState(false);
+  const [loading, setLoading] = useState(true); // State to track loading status
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobileView(window.innerWidth <= 480 || window.innerWidth <= 393);
     };
+
     // Set initial state based on current window size
     handleResize();
+
     // Add event listener to update state on resize
     window.addEventListener('resize', handleResize);
+
     // Clean up event listener on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
 
+  // Simulate loading delay with setTimeout
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false); // Set loading to false after delay
+    }, 2000); // Adjust the delay time as needed
+
+    // Clean up the timeout on component unmount or when isMobileView changes
+    return () => clearTimeout(timeout);
+  }, [isMobileView]);
+
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className={isMobileView ? '' : 'flex'}>
-          {!isMobileView && <SideBar />}
-          <div className={`flex-1 ${isMobileView ? '' : 'ml-64 pr-36'}`}>
-            {!isMobileView && <Navbar />}
-            {isMobileView && <SmallViewNavbar />}
-            <div className={isMobileView ? 'mt-0 flex flex-col' : 'mt-16'}>
-              {children}
+        {loading && isMobileView ? ( // Render loader skeleton if loading and isMobileView is true
+          <ProductsLoaderSkeleton />
+        ) : (
+          <div className={isMobileView ? '' : 'flex'}>
+            {!isMobileView && <SideBar />}
+            <div className={`flex-1 ${isMobileView ? '' : 'ml-64 pr-36'}`}>
+              {!isMobileView && <Navbar />}
+              {isMobileView && <SmallViewNavbar />}
+              <div className={isMobileView ? 'mt-0 flex flex-col' : 'mt-16'}>
+                {children}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </body>
     </html>
   );
