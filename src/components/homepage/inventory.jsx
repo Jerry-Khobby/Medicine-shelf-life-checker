@@ -84,7 +84,7 @@ const InventorySection = () => {
         <div className="flex-1 px-4 text-md font-mono font-medium">Medicine Name</div>
         <div className="flex-1 px-4 text-md font-mono font-medium">Expiration Date</div>
         <div className="flex-1 px-4 text-md font-mono font-medium">Quantity in Stock</div>
-        <div className="flex-1 px-4 text-md font-mono font-medium hidden md:flex">Supplier</div>
+        <div className="flex-1 px-4 text-md font-mono font-medium hidden sm:flex">Supplier</div>
         <div className="flex-1 px-4 text-md font-mono font-medium hidden md:flex">Received</div>
       </div>
       {inventoryData.map((item, index) => (
@@ -92,7 +92,7 @@ const InventorySection = () => {
           <div className="flex-1 px-4 text-md font-sans font-small">{item.medicineName}</div>
           <div className="flex-1 px-4 text-md font-sans font-small">{item.expirationDate}</div>
           <div className="flex-1 px-4 text-md font-sans font-small">{item.quantity}</div>
-          <div className="flex-1 px-4 text-md font-sans font-small hidden md:flex">{item.supplier}</div>
+          <div className="flex-1 px-4 text-md font-sans font-small hidden sm:flex">{item.supplier}</div>
           <div className="flex-1 px-4 text-md font-sans font-small cursor-pointer  hidden md:flex"><FaBell/></div>
         </div>
       ))}
