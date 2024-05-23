@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaBell, FaCalendarAlt, FaCog, FaSignOutAlt } from 'react-icons/fa';
+import { FaBell, FaCog, FaSignOutAlt } from 'react-icons/fa';
 import { FaComments, FaHouse } from "react-icons/fa6";
 import { GiMedicinePills } from "react-icons/gi";
 import { FcExpired } from "react-icons/fc";

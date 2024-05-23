@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import MedicineCards from './card';
+import InventorySection from './inventory';
 
 
 const MainHomePage = () => {
@@ -22,6 +23,12 @@ const MainHomePage = () => {
             <MedicineCards  heading="Expiring Drugs" quantity="350" iconName="MdUpcoming"  color="gray"/>
           </div>
         </div>
+      </div>
+      <div className="px-5 lg:px-8 pb-2 mt-16">
+      <h3 className='font-semibold font-mono text-xl '>MediCheck Inventory</h3>
+      </div>
+      <div className='lg:px-8 px-5 sm:px-5 md:px-5'>
+        <InventorySection/>
       </div>
     </div>
   );
