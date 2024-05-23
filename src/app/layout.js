@@ -6,6 +6,7 @@ import SmallViewNavbar from '@/components/homepage/smallnavbar';
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ProductsLoaderSkeleton from '@/components/skeleton'; // Import your loader skeleton component
+import FooterComponent from '@/components/homepage/footer';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -59,6 +60,7 @@ export default function RootLayout({ children }) {
               <div className={isMobileView ? 'mt-0 flex flex-col' : 'mt-16'}>
                 {children}
               </div>
+              {isMobileView&&<FooterComponent/>}
             </div>
           </div>
         )}

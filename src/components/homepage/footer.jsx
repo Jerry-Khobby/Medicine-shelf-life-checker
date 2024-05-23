@@ -6,7 +6,7 @@ const FooterComponent = () => {
       className="h-20 w-full flex items-center justify-center mt-20"
       style={{
         backgroundImage:
-          "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://cdn.shopify.com/s/files/1/0008/9430/4309/files/African-Print-Fabric_480x480.jpg?v=1609954811)",
+          "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://thumbs.dreamstime.com/b/medical-logo-caduceus-72380945.jpg)",
         backgroundPosition: "center",
         backgroundSize: "cover",
         overflow: "hidden",
