@@ -11,7 +11,7 @@ const MainHomePage = () => {
         <h3 className='font-semibold font-mono text-xl '>Medicine Storage Overview</h3>
       </div>
       <div className="flex justify-start sm:justify-start md:justify-start lg:justify-center lg:px-8 px-5 sm:px-5 md:px-5">
-        <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 grid-cols-1">
           <div className="flex justify-center">
             <MedicineCards heading="All Medicines" quantity="200" iconName="GiMedicinePills" color="green"/>
           </div>
@@ -19,7 +19,7 @@ const MainHomePage = () => {
             <MedicineCards heading="Expired Drugs" quantity="210"  iconName="FcExpired" color="red"/>
           </div>
           <div className="flex justify-center">
-            <MedicineCards  heading="About Expiring Drugs" quantity="350" iconName="MdUpcoming"  color="gray"/>
+            <MedicineCards  heading="Expiring Drugs" quantity="350" iconName="MdUpcoming"  color="gray"/>
           </div>
         </div>
       </div>

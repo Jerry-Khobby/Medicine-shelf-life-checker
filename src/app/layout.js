@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobileView(window.innerWidth <= 480 || window.innerWidth <= 393);
+      setIsMobileView(window.innerWidth <= 540);
     };
 
     // Set initial state based on current window size
