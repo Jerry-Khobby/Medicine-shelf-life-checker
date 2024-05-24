@@ -1,11 +1,12 @@
-import { initMongoose } from "@/models/mongodb";
-import { Medicine } from "@/models/schema";
+import { initiMongoose } from "@/lib/mongodb";
+import Medicine from "@/models/schema";
 import { NextResponse } from "next/server";
 
 export async function GET(req) {
   try {
-    await initMongoose();
-    return NextResponse.json({ msg: 'Successfully' }, { status: 200});
+    await initiMongoose();
+    const data= await Medicine.find({})
+    return NextResponse.json(data);
   } catch (error) {
     return NextResponse.json({ errMsg: error }, { status: 500});
   }
