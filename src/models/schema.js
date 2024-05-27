@@ -28,6 +28,7 @@ const medicineSchema = new mongoose.Schema({
   shelfNumber: {
     type: String,
     required: true,
+    unique: true,
   },
   supplier: {
     type: String,
@@ -36,10 +37,12 @@ const medicineSchema = new mongoose.Schema({
   barcodeEAN_13: {
     type: String,
     required: false,
+    unique: true,
   },
   barcodeUPC_A: {
     type: String,
     required: false,
+    unique: true,
   },
   imageUrl: {
     type: String,
