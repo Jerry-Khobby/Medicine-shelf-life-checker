@@ -13,6 +13,8 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/material-nextjs": "^5.15.11",
+    "dynamsoft-camera-enhancer": "^4.0.3",
+    "dynamsoft-javascript-barcode": "^9.6.42",
     "mongodb": "^6.6.2",
     "mongoose": "^8.4.0",
     "next": "14.2.3",
