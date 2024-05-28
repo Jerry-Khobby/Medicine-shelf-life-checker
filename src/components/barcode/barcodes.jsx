@@ -41,7 +41,7 @@ const BarcodeScanner = ()=>{
   },[])
 
   return ( 
-    <div className='' ref={scannerRef}>
+    <div ref={scannerRef}>
     </div>
    );
 }
