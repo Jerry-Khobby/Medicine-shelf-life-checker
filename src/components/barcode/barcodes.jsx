@@ -1,71 +1,96 @@
-"use client"
-import React,{useEffect, useRef,useState} from 'react';
-import Quagga from '@ericblade/quagga2';
+import { CameraEnhancer,PlayCallbackInfo } from "dynamsoft-camera-enhancer";
+import { TextResult, BarcodeReader } from "dynamsoft-javascript-barcode";
+import React from "react";
 
+const BarcodeScanner = (props) => {
+  const mounted = React.useRef(false);
+  const container = React.useRef(null);
+  const enhancer = React.useRef();
+  const reader = React.useRef();
+  const interval = React.useRef(null);
+  const decoding = React.useRef(false);
 
+  React.useEffect(() => {
+    const init = async () => {
+      if (BarcodeReader.isWasmLoaded() === false) {
+        if (props.license) {
+          BarcodeReader.license = props.license;
+        } else {
+          BarcodeReader.license = "DLS2eyJoYW5kc2hha2VDb2RlIjoiMjAwMDAxLTE2NDk4Mjk3OTI2MzUiLCJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSIsInNlc3Npb25QYXNzd29yZCI6IndTcGR6Vm05WDJrcEQ5YUoifQ==";
+        }
+        BarcodeReader.engineResourcePath = "https://cdn.jsdelivr.net/npm/dynamsoft-javascript-barcode@9.6.11/dist/";
+      }
+      reader.current = await BarcodeReader.createInstance();
+      enhancer.current = await CameraEnhancer.createInstance();
+      await enhancer.current.setUIElement(container.current);
+      enhancer.current.on("played", (playCallbackInfo) => {
+        if (props.onPlayed) {
+          props.onPlayed(playCallbackInfo);
+        }
+        startScanning();
+      });
+      enhancer.current.on("cameraClose", () => {
+        if (props.onClosed) {
+          props.onClosed();
+        }
+      });
+      enhancer.current.setVideoFit("cover");
+      if (props.onInitialized) {
+        props.onInitialized(enhancer.current, reader.current);
+      }
 
-const BarcodeScanner = ()=>{
-  const scannerRef = useRef();
-  const [scanning, setScanning] = useState(false);
-  const [result, setResult] = useState(null);
+      toggleCamera();
+    };
+    if (mounted.current === false) {
+      init();
+    }
+    mounted.current = true;
+  }, []);
 
-  const handleBarcode = (data) => {
-    setResult(data.codeResult.code);
-    Quagga.stop(); // Stop scanning once a barcode is detected
+  const toggleCamera = () => {
+    if (mounted.current === true) {
+      if (props.isActive === true) {
+        enhancer.current?.open(true);
+      } else {
+        stopScanning();
+        enhancer.current?.close();
+      }
+    }
   };
 
-  useEffect(() => {
-    const initializeScanner = async () => {
-      try {
-        if (scanning) {
-          const stream = await Quagga.init({
-            inputStream: {
-              name: 'Live',
-              type: 'LiveStream',
-              target: scannerRef.current,
-              constraints: {
-                width: 480,
-                height: 320,
-                facingMode: 'environment', // Specify the facingMode if needed
-              },
-            },
-            decoder: {
-              readers: ["ean_reader"],
-            },
-          });
-  
-          if (stream) {
-            Quagga.start();
-            Quagga.onDetected(handleBarcode);
-          }
-        } else {
-          Quagga.offDetected(handleBarcode)
-          Quagga.stop();
+  React.useEffect(() => {
+    toggleCamera();
+  }, [props.isActive]);
+
+  const startScanning = () => {
+    const decode = async () => {
+      if (decoding.current === false && reader.current && enhancer.current) {
+        decoding.current = true;
+        const results = await reader.current.decode(enhancer.current.getFrame());
+        if (props.onScanned) {
+          props.onScanned(results);
         }
-      } catch (error) {
-        console.error('Error initializing scanner:', error);
+        decoding.current = false;
       }
     };
+    if (props.interval) {
+      interval.current = setInterval(decode, props.interval);
+    } else {
+      interval.current = setInterval(decode, 40);
+    }
+  };
 
-    initializeScanner();
+  const stopScanning = () => {
+    clearInterval(interval.current);
+  };
 
-    return () => {
-      Quagga.offDetected(handleBarcode);
-      Quagga.stop();
-    };
-  }, [scanning]);
-
-  return ( 
-    <div>
-  <div ref={scannerRef}></div>
-  <button onClick={() => setScanning(prev => !prev)}>
-      {scanning ? 'Stop Scanning' : 'Start Scanning'}
-      </button>
-      {result && <div>Barcode Result: {result}</div>}
-
+  return (
+    <div ref={container} style={{ position: "relative", width: "100%", height: "100%" }}>
+      <div className="dce-video-container"></div>
+      {props.children}
     </div>
-  
-   );
-}
- 
+  );
+};
+
 export default BarcodeScanner;
+
