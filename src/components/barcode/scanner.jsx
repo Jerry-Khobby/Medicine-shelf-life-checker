@@ -1,11 +1,12 @@
 "use client";
-import React,{useState} from 'react'
-import BarcodeScanner from './barcodes'
-import { TextResult } from 'dynamsoft-javascript-barcode/dist/types/interface/textresult';
-import Head from 'next/head';
+import React from 'react'
+import BarcodeScanner from './barcodes';
 
 const MainBarcodeScanner=()=>{
-<div></div>
-}
-
+return(
+  <div className="min-h-screen flex items-center justify-center flex-col">
+<BarcodeScanner/>
+</div>
+);
+};
 export default MainBarcodeScanner;
