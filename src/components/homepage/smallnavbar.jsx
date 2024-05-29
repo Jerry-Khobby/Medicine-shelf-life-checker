@@ -5,9 +5,10 @@ import { GiHamburgerMenu,GiMedicinePills  } from "react-icons/gi";
 import { FaBell,FaCog, FaSignOutAlt } from 'react-icons/fa';
 import { FaComments, FaHouse } from "react-icons/fa6";
 import { FcExpired } from "react-icons/fc";
-import { MdUpcoming } from "react-icons/md";
+import { MdUpcoming,MdAddHomeWork } from "react-icons/md";
 import { BsBookshelf } from "react-icons/bs";
 import { CiBarcode } from "react-icons/ci";
+import Link from 'next/link';
 
 
 
@@ -70,10 +71,10 @@ setIsSideopen(!isSidebarOpen);
           <GiMedicinePills className='mr-3 text-black' />
           All Medicines
         </li>
-        <li className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
-          <FaBell className='mr-3 text-black' />
-          Notification
-        </li>
+        <Link href="/addmedicine" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
+          <MdAddHomeWork className='mr-3 text-black' />
+          Add Medicine
+        </Link>
         <li className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
           <FcExpired className='mr-3 text-black' />
           Expired Drugs
