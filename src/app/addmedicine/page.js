@@ -4,7 +4,10 @@ import AddMedicineForms from '@/components/addmedicine/form';
 
 const AddMedicine = () => {
   return (
+    <div>
 <AddMedicineForms/>
+    </div>
+
     );
 }
  

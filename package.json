@@ -18,6 +18,7 @@
     "@mui/material-nextjs": "^5.15.11",
     "@mui/x-date-pickers": "^7.5.1",
     "date-fns": "^3.6.0",
+    "dayjs": "^1.11.11",
     "dynamsoft-camera-enhancer": "^4.0.3",
     "dynamsoft-javascript-barcode": "^9.6.42",
     "mongodb": "^6.6.2",
