@@ -63,10 +63,10 @@ setIsSideopen(!isSidebarOpen);
           <h2>Features</h2>
         </div>
         <ul className='space-y-4 flex-grow'>
-        <li className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
+        <Link href="/" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
           <FaHouse className='mr-3 text-black' />
           Home
-        </li>
+        </Link>
         <li className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
           <GiMedicinePills className='mr-3 text-black' />
           All Medicines
