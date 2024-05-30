@@ -20,10 +20,10 @@ const SideBar = () => {
           <FaHouse className='mr-3 text-black' />
           Home
         </Link>
-        <li className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
+        <Link href="/allmedicines" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
           <GiMedicinePills className='mr-3 text-black' />
           All Medicines
-        </li>
+        </Link>
         <Link href="/addmedicine" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
           <MdAddHomeWork className='mr-3 text-black' />
           Add Medicine

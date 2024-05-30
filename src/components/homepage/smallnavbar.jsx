@@ -2,7 +2,7 @@
 import React,{useState} from 'react'
 import UserIcon from './usericon';
 import { GiHamburgerMenu,GiMedicinePills  } from "react-icons/gi";
-import { FaBell,FaCog, FaSignOutAlt } from 'react-icons/fa';
+import { FaCog, FaSignOutAlt } from 'react-icons/fa';
 import { FaComments, FaHouse } from "react-icons/fa6";
 import { FcExpired } from "react-icons/fc";
 import { MdUpcoming,MdAddHomeWork } from "react-icons/md";
@@ -67,10 +67,10 @@ setIsSideopen(!isSidebarOpen);
           <FaHouse className='mr-3 text-black' />
           Home
         </Link>
-        <li className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
+        <Link href="/allmedicines" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
           <GiMedicinePills className='mr-3 text-black' />
           All Medicines
-        </li>
+        </Link>
         <Link href="/addmedicine" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
           <MdAddHomeWork className='mr-3 text-black' />
           Add Medicine
