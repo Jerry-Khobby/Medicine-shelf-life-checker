@@ -46,6 +46,12 @@ export async function GET(req) {
       ? (expiredCount / totalMedicines) * 100 
       : 0;
 
+
+      // want to define a function that can throw a message to frontend on the number of days for a drug to expire and all that 
+      const addMessage=(medicines,currentDate)=>{
+        return medicines.map
+      }
+
     const responseData = {
       aboutToExpireCount,
       expiredCount,
