@@ -3,8 +3,9 @@ import { CiBarcode } from "react-icons/ci";
 import { GiMedicinePills } from "react-icons/gi";
 import { FcExpired } from "react-icons/fc";
 import { MdUpcoming } from "react-icons/md";
+import Link from 'next/link';
 
-const MedicineCards = ({heading,quantity,percentage,iconName,color}) => {
+const MedicineCards = ({heading,quantity,percentage,iconName,color,link}) => {
   const renderIcon=()=>{
     switch(iconName){
       case "GiMedicinePills":
@@ -16,7 +17,7 @@ const MedicineCards = ({heading,quantity,percentage,iconName,color}) => {
     }
   }
   return (
-    <div className="p-4 border rounded-lg shadow-md sm:w-[20rem] lg:w-96 md:w-[22rem] w-[20rem] h-36 flex flex-col bg-blue-100 cursor-pointer">
+    <Link href={link} className="p-4 border rounded-lg shadow-md sm:w-[20rem] lg:w-96 md:w-[22rem] w-[20rem] h-36 flex flex-col bg-blue-100 cursor-pointer">
       <div className="flex items-start gap-5 mb-4">
         <div className="mr-4">
           {renderIcon()}
@@ -33,7 +34,7 @@ const MedicineCards = ({heading,quantity,percentage,iconName,color}) => {
           <p className='text-sm text-gray-500 font-sans'>15GB of 1TB storage</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

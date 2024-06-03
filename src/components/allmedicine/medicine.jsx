@@ -55,7 +55,7 @@ const AllMedicine = () => {
       <div className='flex items-center justify-center'>
         <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4 md:gap-8 lg:gap-4 justify-center items-center mt-7'>
           {data.map((medicine) => (
-            <div key={medicine.id} className='border-2 border-gray-200 rounded-lg w-72 sm:w-72 lg:w-56 md:w-72 xlg:w-56 h-80 shadow-sm '>
+            <div key={medicine.id} className='border-2 border-gray-200 rounded-lg w-72 sm:w-72 lg:w-56 md:w-72 xlg:w-56 h-80 shadow-sm transition duration-500 ease-in-out hover:scale-105'>
               <div>
                 {medicine.imageUrl ? (
                   <img src={medicine.imageUrl} alt={medicine.name} className='w-32 h-32 rounded-sm flex items-center justify-center mx-auto pt-10' />
