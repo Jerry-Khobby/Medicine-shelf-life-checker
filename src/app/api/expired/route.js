@@ -49,16 +49,40 @@ export async function GET(req) {
 
       // want to define a function that can throw a message to frontend on the number of days for a drug to expire and all that 
       const addMessage=(medicines,currentDate)=>{
-        return medicines.map
+        return medicines.map(medicine=>{
+          const expirationDate = new Date(medicine.expirationDate);
+          const timeDiff =expirationDate-currentDate;
+
+          const daysDiff = Math.ceil(timeDiff/(1000*60*60*24));
+
+          let message="";
+          if(daysDiff < 0){
+            message=` This medicine expired ${Math.abs(daysDiff)} days ago.`;
+          }else if(daysDiff===0){
+            message = ' This medicine expires today.';
+          }
+          else{
+            message=`This medicine will be expiring in ${daysDiff} days time. `;
+          }
+
+          return {
+            ...medicine._doc,
+            message //add the message property
+          }
+
+        })
       }
+
+      const aboutToExpireMedicinesWithMessages = addMessage(aboutToExpireMedicines, currentDate);
+      const expiredMedicinesWithMessages = addMessage(expiredMedicines, currentDate);
 
     const responseData = {
       aboutToExpireCount,
       expiredCount,
       aboutExpiringPercentage,
       drugsExpiredPercentage,
-      aboutToExpireMedicines,
-      expiredMedicines
+      aboutToExpireMedicines: aboutToExpireMedicinesWithMessages,
+      expiredMedicines: expiredMedicinesWithMessages
     };
 
     return NextResponse.json(responseData, { status: 200 });
