@@ -79,10 +79,10 @@ setIsSideopen(!isSidebarOpen);
           <FcExpired className='mr-3 text-black' />
           Expired Drugs
         </Link>
-        <li className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
+        <Link href="/expiring" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
           <MdUpcoming className='mr-3 text-black' />
           About Expiring
-        </li>
+        </Link>
         <li className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
           <BsBookshelf className='mr-3 text-black' />
           Shelf Numbers
