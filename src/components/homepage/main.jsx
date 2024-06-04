@@ -21,7 +21,7 @@ const MainHomePage = () => {
             <MedicineCards heading="Expired Drugs" quantity="210"  iconName="FcExpired" color="red" link="/expired" />
           </div>
           <div className="flex justify-center">
-            <MedicineCards  heading="Expiring Drugs" quantity="350" iconName="MdUpcoming"  color="gray" link="/expired" />
+            <MedicineCards  heading="Expiring Drugs" quantity="350" iconName="MdUpcoming"  color="gray" link="/expiring" />
           </div>
         </div>
       </div>

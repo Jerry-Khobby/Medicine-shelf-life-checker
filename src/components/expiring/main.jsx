@@ -1,34 +1,37 @@
+
 "use client";
-import React,{Suspense,useState,useEffect} from 'react'
+import React,{useState,useEffect,Suspense} from 'react'
+
 import ProductsLoaderSkeleton from '../skeleton';
 
 
-
-const ExpiredDrugsComponents = () => {
+const ExpiringDrugsComponents = () => {
+  //statement for the data received from the backend 
   const [data,setData]=useState(null);
   const [loading,setLoading]=useState(true);
   const [error,setError]=useState(null);
 
-  //we want to use the use Effect to fetch data from an backend or an api 
+
+  //I want to useEffect to fetch the data from the api and bring to the frontend 
   useEffect(()=>{
-    //define the fetch function 
-    const fetchData =async()=>{
+    const fetchData= async()=>{
       try{
-        const response = await fetch("http://localhost:3000/api/expired");
+        const response =await fetch("http://localhost:3000/api/expired");
         if(!response.ok){
-          throw new Error("Network response was not ok, check your internet connections")
+          throw new Error("Network response was not successful,check your internet connection");
         }
-        const result= await response.json();
-        setData(result.expiredMedicines)
+        const result =await response.json();
+        setData(result.aboutToExpireMedicines);
 
       }catch(error){
-        setError(error);
+setError(error);
       }finally{
         setLoading(false);
       }
     }
     fetchData();
   },[]);
+
 
   if (loading) {
     return <div><ProductsLoaderSkeleton /></div>;
@@ -48,10 +51,11 @@ const ExpiredDrugsComponents = () => {
     const year = date.getFullYear();
     return `${month}-${day}-${year}`;
   }
-return (  
+
+  return ( 
 <div className='min-h-screen mt-20 flex flex-col px-5 lg:px-8'>
 <div>
-  <h2 className='font-semibold font-mono text-xl'>All Expired Drugs</h2>
+  <h2 className='font-semibold font-mono text-xl'>About Expired Drugs</h2>
 </div>
 <Suspense fallback={<ProductsLoaderSkeleton/>}>
       <div className='flex items-center justify-center'>
@@ -74,7 +78,7 @@ return (
                   <h6 className='font-normal text-xs text-center'>Manufacturing Date: {handleDateFormat(medicine.manufacturingDate)}</h6>
                   <h6 className='font-normal text-xs text-center'>Barcode Number: {medicine.barcodeEAN_13}</h6>
                   <div className='flex items-center justify-center mt-2'>
-                  <h6 className='font-normal text-xs  text-white h-5 w-14 text-center bg-red-700 rounded-sm'>Expired</h6>
+                  <h6 className='font-normal text-xs  text-white h-5 w-24 text-center bg-red-700 rounded-sm'>About To Expire</h6>
                   </div>
                   <h6 className='font-normal text-xs text-center'>{medicine.message} </h6>
                 </div>
@@ -86,7 +90,7 @@ return (
 
       </Suspense>
     </div>
-  );
+   );
 }
  
-export default ExpiredDrugsComponents;
+export default ExpiringDrugsComponents;

@@ -28,10 +28,10 @@ const SideBar = () => {
           <MdAddHomeWork className='mr-3 text-black' />
           Add Medicine
         </Link>
-        <li className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
+        <Link href="/expired" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
           <FcExpired className='mr-3 text-black' />
           Expired Drugs
-        </li>
+        </Link>
         <li className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
           <MdUpcoming className='mr-3 text-black' />
           About Expiring
