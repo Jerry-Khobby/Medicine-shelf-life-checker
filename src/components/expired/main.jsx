@@ -1,6 +1,7 @@
 "use client";
 import React,{Suspense,useState,useEffect} from 'react'
 import ProductsLoaderSkeleton from '../skeleton';
+import {GiMedicinePills} from "react-icons/gi";
 
 
 

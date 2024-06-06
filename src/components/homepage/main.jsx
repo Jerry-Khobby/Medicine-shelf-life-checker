@@ -48,7 +48,7 @@ const MainHomePage = () => {
       <div className="flex justify-start sm:justify-start md:justify-start lg:justify-center lg:px-8 px-5 sm:px-5 md:px-5">
         <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 grid-cols-1">
           <div className="flex justify-center">
-            <MedicineCards heading="All Medicines" quantity={data.totalMedicines} iconName="GiMedicinePills" color="green" link="/addmedicine" percentage="100"/>
+            <MedicineCards heading="All Medicines" quantity={data.totalMedicines} iconName="GiMedicinePills" color="green" link="/allmedicines" percentage="100"/>
           </div>
           <div className="flex justify-center">
             <MedicineCards heading="Expired Drugs" quantity={data.expiredCount} iconName="FcExpired" color="red" link="/expired" percentage={data.drugsExpiredPercentage} />

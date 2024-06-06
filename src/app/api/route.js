@@ -28,12 +28,12 @@ export async function GET(req) {
 
    // Calculate the percentage of drugs about to expire
    const aboutExpiringPercentage = totalMedicines > 0 
-   ? (aboutToExpireCount / totalMedicines) * 100 
+   ? ((aboutToExpireCount / totalMedicines) * 100).toFixed(2)
    : 0;
 
  // Calculate the percentage of drugs expired
  const drugsExpiredPercentage = totalMedicines > 0 
-   ? (expiredCount / totalMedicines) * 100 
+   ? ((expiredCount / totalMedicines) * 100).toFixed(2)
    : 0;
 
     const responseData = {

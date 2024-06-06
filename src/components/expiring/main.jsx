@@ -1,8 +1,8 @@
 
 "use client";
 import React,{useState,useEffect,Suspense} from 'react'
-
 import ProductsLoaderSkeleton from '../skeleton';
+import {GiMedicinePills  } from "react-icons/gi";
 
 
 const ExpiringDrugsComponents = () => {
