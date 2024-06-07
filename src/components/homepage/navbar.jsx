@@ -2,6 +2,7 @@
 import React,{useState}from 'react';
 import { Button, Tooltip } from '@mui/material';
 import UserIcon from './usericon';
+import Link from 'next/link';
 
 
 
@@ -25,12 +26,12 @@ const Navbar = () => {
       justifyContent:"space-evenly",
       paddingRight:"18rem"
       }}>
-      <div className='pl-3 cursor-pointer'>
+      <Link href="/" className='pl-3 cursor-pointer'>
           <img src="https://static.vecteezy.com/system/resources/thumbnails/002/685/731/small/medical-caduceus-symbol-design-illustration-eps-format-suitable-for-your-design-needs-logo-illustration-animation-etc-vector.jpg" alt="Logo " height={50} width={50}/>
-      </div>
-      <div>
+      </Link>
+      <Link href="/">
         <h1 className='text-2xl font-mono font-semibold cursor-pointer'>MediCheck Overview</h1>
-      </div>
+      </Link>
       <div style={{
       display: "flex",
       alignItems: "center",
