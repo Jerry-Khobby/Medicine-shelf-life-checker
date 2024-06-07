@@ -14,7 +14,7 @@ export async function GET(req) {
     //Let's get today's date first 
     const currentDate= new Date();
     const aboutToExpireDate = new Date(currentDate);
-    aboutToExpireDate.setDate(currentDate.getDate() + 15);
+    aboutToExpireDate.setDate(currentDate.getDate() + 14);
 
     // Count of medicines about to expire in 15 days
     const aboutToExpireCount = await Medicine.countDocuments({

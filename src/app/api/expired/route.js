@@ -12,7 +12,7 @@ export async function GET(req) {
     
     // Calculate the date 15 days from now
     const aboutToExpireDate = new Date();
-    aboutToExpireDate.setDate(currentDate.getDate() + 15);
+    aboutToExpireDate.setDate(currentDate.getDate() + 14);
     
     // Find all medicines
     const allMedicines = await Medicine.find({});
