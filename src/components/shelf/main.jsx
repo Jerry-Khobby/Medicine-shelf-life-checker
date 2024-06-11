@@ -86,15 +86,23 @@ const ShelfComponent = () => {
         </form>
       </div>
       {data &&(
-        <div>
-          {data.name}
-          {data.group}
-          {data.quantityInStock}
-          {data.description}
-          {data.manufacturingDate}
-          {data.expiringDate}
-          {data.barcodeEAN_13}
+        <div className='items-center flex justify-center '>
+    <div className='border-2 border-gray-200 rounded-lg w-72 sm:w-72 lg:w-56 md:w-72 xlg:w-56 h-[23rem] shadow-sm transition duration-500 ease-in-out hover:scale-105'>
+    {data.imageUrl ? (
+                  <img src={data.imageUrl} alt={data.name} className='w-32 h-32 rounded-sm flex items-center justify-center mx-auto pt-10' />
+                ) : (
+                  <GiMedicinePills  className='w-20 h-20 rounded-full flex items-center justify-center mx-auto pt-10'/>
+                )}
+         <h6 className='font-semibold text-xs text-center'>{data.name}</h6> 
+          <h6 className='font-normal text-xs text-center'>{data.group}</h6>
+         <h6 className='font-normal text-xs text-center'>{data.quantityInStock}</h6> 
+         <h6 className='font-normal text-xs text-center'>{data.description}</h6> 
+          <h6 className='font-normal text-xs text-center'>Expiring Date: {handleDateFormat(data.expirationDate)}</h6>
+          <h6 className='font-normal text-xs text-center'>Manufacturing Date: {handleDateFormat(data.manufacturingDate)}</h6>
+          <h6 className='font-normal text-xs text-center'>Barcode Number: {data.barcodeEAN_13}</h6>
           </div>
+        </div>
+    
       )}
       {!data &&(
                 <div className='flex flex-col items-center justify-center min-h-screen'>
