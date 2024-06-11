@@ -90,22 +90,27 @@ const AddMedicineForms = () => {
               required
               className="w-full p-2 border border-gray-300 rounded"
             ></textarea>
-            <input
-              type="date"
-              name="manufacturingDate"
-              value={formData.manufacturingDate}
-              onChange={handleChange}
-              required
-              className="w-full p-2 border border-gray-300 rounded"
-            />
-            <input
-              type="date"
-              name="expirationDate"
-              value={formData.expirationDate}
-              onChange={handleChange}
-              required
-              className="w-full p-2 border border-gray-300 rounded"
-            />
+<label htmlFor="manufacturingDate" className="text-gray-500">Manufacturing date of drug</label>
+<input
+  type="date"
+  id="manufacturingDate"
+  name="manufacturingDate"
+  value={formData.manufacturingDate}
+  onChange={handleChange}
+  required
+  className="w-full p-2 border border-gray-300 rounded"
+/>
+
+<label htmlFor="expirationDate" className="text-gray-500">Expiring date of drug</label>
+<input
+  type="date"
+  id="expirationDate"
+  name="expirationDate"
+  value={formData.expirationDate}
+  onChange={handleChange}
+  required
+  className="w-full p-2 border border-gray-300 rounded"
+/>
             <input
               type="number"
               name="quantityInStock"

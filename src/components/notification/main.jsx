@@ -42,8 +42,19 @@ const NotificationComponent = () => {
     return <div>Error: {error}</div>;
   }
 
-  if (!data) {
-    return <div>No data available</div>;
+  if (!data || data.length===0) {
+    return(
+      <div>
+        <div className='mx-8'>
+  <h2 className='font-semibold font-mono text-xl'>Notifications</h2>
+</div>
+      <div className='flex flex-col items-center justify-center min-h-screen'>
+        <IoIosNotifications className="w-32 h-32 text-gray-500" />
+        <p className="mt-4 text-lg text-gray-500">No notification Available</p>
+      </div>
+      </div>
+
+    );
   }
 
 
@@ -53,10 +64,10 @@ const NotificationComponent = () => {
   <h2 className='font-semibold font-mono text-xl'>Notification</h2>
   <IoIosNotifications size={40}/>
 </div>
-<div className='flex flex-col items-center justify-center'>
+<div className='flex flex-col items-center justify-center gap-3 mt-6'>
 {
   expiredDrugs.map((medicine)=>(
-    <div key={medicine.id} className='border-2 border-gray-200 rounded-lg '>
+    <div key={medicine.id} className='border-2 border-gray-200 rounded-lg w-full max-w-2xl h-14 text-center flex items-center justify-center cursor-pointer transition duration-500 ease-in-out hover:scale-105'>
 <div>
   {medicine.name} on Shelf Number {medicine.shelfNumber} has  expired
 </div>
@@ -65,7 +76,7 @@ const NotificationComponent = () => {
 }
 {
   aboutExpiring.map((medicine)=>(
-    <div>
+    <div key={medicine.id} className='border-2 border-gray-200 rounded-lg w-full max-w-2xl h-14 text-center flex items-center justify-center cursor-pointer transition duration-500 ease-in-out hover:scale-105'>
       {medicine.name} on Shelf Number {medicine.shelfNumber} is about getting expired 
     </div>
   ))

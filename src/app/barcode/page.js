@@ -4,7 +4,9 @@ import MainBarcodeScanner from '@/components/barcode/scanner';
 
 const BarcodeScanner = () => {
   return ( 
-    <MainBarcodeScanner/>
+    <div>
+ <MainBarcodeScanner/>
+    </div>
    );
 }
  

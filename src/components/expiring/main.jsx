@@ -40,8 +40,19 @@ setError(error);
     return <div>Error: {error}</div>;
   }
 
-  if (!data) {
-    return <div>No data available</div>;
+  if (!data || data.length===0) {
+    return(
+      <div>
+    <div className='mx-8 mt-20'>
+  <h2 className='font-semibold font-mono text-xl'>About Expired Drugs</h2>
+</div>
+      <div className='flex flex-col items-center justify-center min-h-screen'>
+        <GiMedicinePills className="w-32 h-32 text-gray-500" />
+        <p className="mt-4 text-lg text-gray-500">No Medicine available</p>
+      </div>
+      </div>
+
+    );
   }
 
   const handleDateFormat = (isoString) => {
@@ -87,7 +98,6 @@ setError(error);
           ))}
         </div>
       </div>
-
       </Suspense>
     </div>
    );

@@ -36,10 +36,10 @@ const SideBar = () => {
           <MdUpcoming className='mr-3 text-black' />
           About Expiring
         </Link>
-        <li className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
+        <Link href="/shelf" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
           <BsBookshelf className='mr-3 text-black' />
           Shelf Numbers
-        </li>
+        </Link>
         <li className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
           <CiBarcode className='mr-3 text-black' />
           Scan Barcode
