@@ -69,7 +69,7 @@ const ShelfComponent = () => {
         <h2 className='font-semibold font-mono text-xl mr-2'>Shelf Numbers</h2>
         <BsBookshelf size={40} />
       </div>
-      <div className='w-full max-w-2xl p-8'>
+      <div className='w-full max-w-3xl p-1'>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -87,7 +87,7 @@ const ShelfComponent = () => {
       </div>
       {data &&(
         <div className='items-center flex justify-center '>
-    <div className='border-2 border-gray-200 rounded-lg w-72 sm:w-72 lg:w-56 md:w-72 xlg:w-56 h-[23rem] shadow-sm transition duration-500 ease-in-out hover:scale-105'>
+    <div className='border-2 border-gray-200 rounded-lg w-72 sm:w-72 lg:w-56 md:w-72 xlg:w-56 h-[17rem] shadow-sm transition duration-500 ease-in-out hover:scale-105'>
     {data.imageUrl ? (
                   <img src={data.imageUrl} alt={data.name} className='w-32 h-32 rounded-sm flex items-center justify-center mx-auto pt-10' />
                 ) : (
@@ -95,7 +95,7 @@ const ShelfComponent = () => {
                 )}
          <h6 className='font-semibold text-xs text-center'>{data.name}</h6> 
           <h6 className='font-normal text-xs text-center'>{data.group}</h6>
-         <h6 className='font-normal text-xs text-center'>{data.quantityInStock}</h6> 
+         <h6 className='font-normal text-xs text-center'>Quantity in Stock:{data.quantityInStock}</h6> 
          <h6 className='font-normal text-xs text-center'>{data.description}</h6> 
           <h6 className='font-normal text-xs text-center'>Expiring Date: {handleDateFormat(data.expirationDate)}</h6>
           <h6 className='font-normal text-xs text-center'>Manufacturing Date: {handleDateFormat(data.manufacturingDate)}</h6>
