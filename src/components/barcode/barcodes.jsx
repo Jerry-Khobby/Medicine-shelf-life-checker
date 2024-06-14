@@ -1,8 +1,7 @@
-import React,{useRef,useEffect} from 'react'
-import {CameraEnhancer,PlayCallbackInfo} from "dynamsoft-camera-enhancer";
-import {TextResult,BarcodeReader} from "dynamsoft-javascript-barcode";
-
-
+"use client";
+import React, { useRef, useEffect } from 'react';
+import { CameraEnhancer, PlayCallbackInfo } from "dynamsoft-camera-enhancer";
+import { TextResult, BarcodeReader } from "dynamsoft-javascript-barcode";
 
 const BarcodeScannerComponent = ({
   isActive,
@@ -21,45 +20,43 @@ const BarcodeScannerComponent = ({
   const decoding = useRef(false);
   const scanInterval = useRef(null);
 
-
-
-
-  useEffect(()=>{
-    const init = async()=>{
-      if(BarcodeReader.isWasmLoaded()===false){
-        BarcodeReader.license = license || "DLS2eyJoYW5kc2hha2VDb2RlIjoiMjAwMDAxLTE2NDk4Mjk3OTI2MzUiLCJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSIsInNlc3Npb25QYXNzd29yZCI6IndTcGR6Vm05WDJrcEQ5YUoifQ==";
+  useEffect(() => {
+    const init = async () => {
+      if (typeof window === "undefined") return; // Ensure this runs only in the browser
+      if (BarcodeReader.isWasmLoaded() === false) {
+        BarcodeReader.license = license = "DLS2eyJoYW5kc2hha2VDb2RlIjoiMjAwMDAxLTE2NDk4Mjk3OTI2MzUiLCJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSIsInNlc3Npb25QYXNzd29yZCI6IndTcGR6Vm05WDJrcEQ5YUoifQ==";
         BarcodeReader.engineResourcePath = "https://cdn.jsdelivr.net/npm/dynamsoft-javascript-barcode@9.6.11/dist/";
       }
       reader.current = await BarcodeReader.createInstance();
-      enhancer.current= await CameraEnhancer.createInstance();
+      enhancer.current = await CameraEnhancer.createInstance();
       await enhancer.current.setUIElement(container.current);
-      enhancer.current.on("played",(playCallbackInfo)=>{
-        if(onPlayed){
+      enhancer.current.on("played", (playCallbackInfo) => {
+        if (onPlayed) {
           onPlayed(playCallbackInfo);
         }
         startScanning();
       });
-      enhancer.current.on("cameraClose",()=>{
-        if(onClosed){
+      enhancer.current.on("cameraClose", () => {
+        if (onClosed) {
           onClosed();
         }
       });
       enhancer.current.setVideoFit("cover");
-      if(onInitialized){
-        onInitialized(enhancer.current,reader.current);
+      if (onInitialized) {
+        onInitialized(enhancer.current, reader.current);
       }
       toggleCamera();
-    }
-    if(!mounted.current){
+    };
+    if (!mounted.current) {
       init();
     }
-    mounted.current=true;
-    return ()=>{
-      if(enhancer.current) enhancer.current.close();
-      if(reader.current) reader.current.destroy();
-      if(scanInterval.current) clearInterval(scanInterval.current);
-    }
-  },[license,onInitialized,onPlayed,onClosed]);
+    mounted.current = true;
+    return () => {
+      if (enhancer.current) enhancer.current.close();
+      if (reader.current) reader.current.destroy();
+      if (scanInterval.current) clearInterval(scanInterval.current);
+    };
+  }, [license, onInitialized, onPlayed, onClosed]);
 
   const toggleCamera = () => {
     if (mounted.current) {
@@ -70,14 +67,11 @@ const BarcodeScannerComponent = ({
         enhancer.current?.close();
       }
     }
-  }
+  };
 
   useEffect(() => {
     toggleCamera();
   }, [isActive]);
-
-
-
 
   const startScanning = () => {
     const decode = async () => {
@@ -89,20 +83,20 @@ const BarcodeScannerComponent = ({
         }
         decoding.current = false;
       }
-    }
-
+    };
     scanInterval.current = setInterval(decode, interval || 40);
-  }
+  };
 
   const stopScanning = () => {
     clearInterval(scanInterval.current);
-  }
-  return ( 
+  };
+
+  return (
     <div ref={container} style={{ position: "relative", width: "100%", height: "100%" }}>
-    <div className="dce-video-container"></div>
-    {children}
-  </div>
-   );
-}
- 
+      <div className="dce-video-container"></div>
+      {children}
+    </div>
+  );
+};
+
 export default BarcodeScannerComponent;

@@ -1,11 +1,11 @@
 import React from 'react'
-import MainBarcodeScanner from '@/components/barcode/scanner';
+import MainScanner from '@/components/barcode/scanner';
 
 
 const BarcodeScanner = () => {
   return ( 
     <div>
- <MainBarcodeScanner/>
+ <MainScanner/>
     </div>
    );
 }
