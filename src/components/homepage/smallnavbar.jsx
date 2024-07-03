@@ -87,10 +87,10 @@ setIsSideopen(!isSidebarOpen);
           <BsBookshelf className='mr-3 text-black' />
           Shelf Numbers
         </Link>
-        <li className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
+        <Link href="/barcode" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
           <CiBarcode className='mr-3 text-black' />
           Scan Barcode
-        </li>
+        </Link>
         <li className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
           <FaCog className='mr-3 text-black' />
           App Settings

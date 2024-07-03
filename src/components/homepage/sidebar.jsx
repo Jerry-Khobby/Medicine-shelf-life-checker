@@ -40,10 +40,10 @@ const SideBar = () => {
           <BsBookshelf className='mr-3 text-black' />
           Shelf Numbers
         </Link>
-        <li className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
+        <Link href="/barcode" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
           <CiBarcode className='mr-3 text-black' />
           Scan Barcode
-        </li>
+        </Link>
       </ul>
       <ul className='space-y-4 pb-11'>
         <li className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
