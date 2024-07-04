@@ -15,7 +15,7 @@ const styles = {
 const MainScanner = () => {
   const [deviceId, setDeviceId] = useState(null);
   const [tracker, setTracker] = useState("centerText");
-  const [pause, setPause] = useState(false);
+  const [pause, setPause] = useState(true);
   const [detectedCode, setDetectedCode] = useState(null);
 
   const devices = useDevices();
@@ -32,10 +32,16 @@ const MainScanner = () => {
         return () => {}; // Return a no-op function to avoid undefined
     }
   }
+  const handlePause=()=>{
+    setPause(false);
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center flex-col">
       <div className="flex items-center justify-center flex-col ">
+        <div>
+        <button  className="border border-black bg-red-500 text-black p-2 m-1 w-28 rounded-sm " onClick={handlePause}>Scan Now</button>
+        </div>
       <Scanner
         formats={[
           'qr_code',

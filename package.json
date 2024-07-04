@@ -17,6 +17,7 @@
     "@mui/material": "^5.15.19",
     "@mui/material-nextjs": "^5.15.11",
     "@mui/x-date-pickers": "^7.5.1",
+    "@reduxjs/toolkit": "^2.2.6",
     "@use-symbology-scanner/react": "^1.0.3",
     "@yudiel/react-qr-scanner": "^2.0.4",
     "date-fns": "^3.6.0",

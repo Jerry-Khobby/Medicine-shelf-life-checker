@@ -9,13 +9,17 @@ import { MdUpcoming,MdAddHomeWork } from "react-icons/md";
 import { BsBookshelf } from "react-icons/bs";
 import { CiBarcode } from "react-icons/ci";
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 
 
 
 
 const SmallViewNavbar = () => {
+  const router=useRouter();
+  const currentRoute=router.pathname;
   const [isSidebarOpen,setIsSideopen]=useState(false);
+
 
   const toggleSidebar=()=>{
 setIsSideopen(!isSidebarOpen);
@@ -63,10 +67,11 @@ setIsSideopen(!isSidebarOpen);
           <h2>Features</h2>
         </div>
         <ul className='space-y-4 flex-grow'>
-        <Link href="/" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
-          <FaHouse className='mr-3 text-black' />
-          Home
-        </Link>
+    <Link href="/" className={`flex items-center cursor-pointer p-2 rounded ${currentRoute === "/" ? "hover:bg-gray-400" : "bg-gray-400"}`}>
+  <FaHouse className='mr-3 text-black' />
+  Home
+</Link>
+
         <Link href="/allmedicines" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
           <GiMedicinePills className='mr-3 text-black' />
           All Medicines
