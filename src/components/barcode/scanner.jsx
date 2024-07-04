@@ -77,25 +77,6 @@ const MainScanner = () => {
           setDetectedCode(detectedCodes[0]) 
         }}
       />
-      <div style={styles.controls}>
-        {devices.length > 0 && (
-          <select onChange={(e) => setDeviceId(e.target.value)} value={deviceId || ''}>
-            {devices.map((device) => (
-              <option key={device.deviceId} value={device.deviceId}>
-                {device.label || device.deviceId}
-              </option>
-            ))}
-          </select>
-        )}
-        <button onClick={() => setPause(!pause)}>
-          {pause ? 'Resume' : 'Pause'}
-        </button>
-        <select onChange={(e) => setTracker(e.target.value)} value={tracker}>
-          <option value="centerText">Center Text</option>
-          <option value="outline">Outline</option>
-          <option value="boundingBox">Bounding Box</option>
-        </select>
-      </div>
       </div>
     </div>
   );
