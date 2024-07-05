@@ -41,7 +41,7 @@ const ExpiredDrugsComponents = () => {
   if (!data || data.length===0) {
     return(
       <div>
-        <div className='mx-8'>
+      <div className='mx-8'>
   <h2 className='font-semibold font-mono text-xl'>About Expired Drugs</h2>
 </div>
       <div className='flex flex-col items-center justify-center min-h-screen'>

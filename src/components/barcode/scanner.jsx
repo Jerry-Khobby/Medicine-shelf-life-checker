@@ -37,12 +37,13 @@ const MainScanner = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center flex-col">
+    <div className="min-h-screen flex items-center justify-center flex-col mt-32">
       <div className="flex items-center justify-center flex-col ">
         <div>
         <button  className="border border-black bg-red-500 text-black p-2 m-1 w-28 rounded-sm " onClick={handlePause}>Scan Now</button>
         </div>
-      <Scanner
+        <div className="bg-white shadow-md -z-0">
+        <Scanner
         formats={[
           'qr_code',
           'micro_qr_code',
@@ -82,7 +83,9 @@ const MainScanner = () => {
           console.log(detectedCodes)
           setDetectedCode(detectedCodes[0]) 
         }}
+        classNames="border border-gray-300 rounded"
       />
+        </div>
       </div>
     </div>
   );

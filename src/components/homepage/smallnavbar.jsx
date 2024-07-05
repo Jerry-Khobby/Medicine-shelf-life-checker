@@ -1,5 +1,5 @@
 "use client";
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import UserIcon from './usericon';
 import { GiHamburgerMenu,GiMedicinePills  } from "react-icons/gi";
 import { FaCog, FaSignOutAlt } from 'react-icons/fa';
@@ -9,16 +9,16 @@ import { MdUpcoming,MdAddHomeWork } from "react-icons/md";
 import { BsBookshelf } from "react-icons/bs";
 import { CiBarcode } from "react-icons/ci";
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 
 
 
 
 const SmallViewNavbar = () => {
-  const router=useRouter();
-  const currentRoute=router.pathname;
-  const [isSidebarOpen,setIsSideopen]=useState(false);
+const currentRoute=usePathname();
+const [isSidebarOpen,setIsSideopen]=useState(false);
+
 
 
   const toggleSidebar=()=>{
@@ -67,32 +67,32 @@ setIsSideopen(!isSidebarOpen);
           <h2>Features</h2>
         </div>
         <ul className='space-y-4 flex-grow'>
-    <Link href="/" className={`flex items-center cursor-pointer p-2 rounded ${currentRoute === "/" ? "hover:bg-gray-400" : "bg-gray-400"}`}>
+    <Link href="/" className={`flex items-center cursor-pointer p-2 rounded ${currentRoute === "/" ? "bg-gray-400" : "hover:bg-gray-400"}`}>
   <FaHouse className='mr-3 text-black' />
   Home
 </Link>
 
-        <Link href="/allmedicines" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
+        <Link href="/allmedicines" className={`flex items-center cursor-pointer p-2 rounded ${currentRoute === "/allmedicines" ? "bg-gray-400" : "hover:bg-gray-400"}`}>
           <GiMedicinePills className='mr-3 text-black' />
           All Medicines
         </Link>
-        <Link href="/addmedicine" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
+        <Link href="/addmedicine" className={`flex items-center cursor-pointer p-2 rounded ${currentRoute === "/addmedicine" ? "bg-gray-400" : "hover:bg-gray-400"}`}>
           <MdAddHomeWork className='mr-3 text-black' />
           Add Medicine
         </Link>
-        <Link href="/expired" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
+        <Link href="/expired" className={`flex items-center cursor-pointer p-2 rounded ${currentRoute === "/expired" ? "bg-gray-400" : "hover:bg-gray-400"}`}>
           <FcExpired className='mr-3 text-black' />
           Expired Drugs
         </Link>
-        <Link href="/expiring" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
+        <Link href="/expiring" className={`flex items-center cursor-pointer p-2 rounded ${currentRoute === "/expiring" ? "bg-gray-400" : "hover:bg-gray-400"}`}>
           <MdUpcoming className='mr-3 text-black' />
           About Expiring
         </Link>
-        <Link href="/shelf" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
+        <Link href="/shelf" className={`flex items-center cursor-pointer p-2 rounded ${currentRoute === "/shelf" ? "bg-gray-400" : "hover:bg-gray-400"}`}>
           <BsBookshelf className='mr-3 text-black' />
           Shelf Numbers
         </Link>
-        <Link href="/barcode" className='flex items-center cursor-pointer hover:bg-gray-400 p-2 rounded'>
+        <Link href="/barcode" className={`flex items-center cursor-pointer p-2 rounded ${currentRoute === "/barcode" ? "bg-gray-400" : "hover:bg-gray-400"}`}>
           <CiBarcode className='mr-3 text-black' />
           Scan Barcode
         </Link>
