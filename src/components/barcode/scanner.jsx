@@ -13,12 +13,35 @@ const styles = {
 };
 
 const MainScanner = () => {
+  const devices = useDevices();
   const [deviceId, setDeviceId] = useState(null);
   const [tracker, setTracker] = useState("centerText");
   const [pause, setPause] = useState(true);
   const [detectedCode, setDetectedCode] = useState(null);
+  const [error,setError]=useState(null);
+  const [loading,setLoading]=useState(false);
 
-  const devices = useDevices();
+
+  //a function that handles the submission of the barcode 
+  const handleSubmit =async (e)=>{
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+    try{
+      const response =await fetch("",{
+        method: "POST",
+        headers:{
+          'Content-Type':'applicationjson',
+          body:JSON.stringify(detectedCode),
+        }
+      })
+     
+    }catch(e){
+      setError("The error gotten is "+e);
+    }
+  }
+
+  
 
   function getTracker() {
     switch (tracker) {
