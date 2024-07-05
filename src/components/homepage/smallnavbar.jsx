@@ -58,10 +58,10 @@ setIsSideopen(!isSidebarOpen);
 
         </div>
         {/** side bar overlay */}
-        {isSidebarOpen&&(<div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-999" onClick={closeSidebar}></div>
+        {isSidebarOpen&&(<div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50" style={{zIndex:0}} onClick={closeSidebar}></div>
         )}
         {/** sidebar */}
-        <div className={`fixed top-0 left-0 w-64 h-full bg-white z-1000 transition-transform transform pt-16 px-5 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} overflow-y-auto shadow-lg`}>
+        <div className={`fixed top-0 left-0 w-64 h-full bg-white  transition-transform transform pt-16 px-5 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} overflow-y-auto shadow-lg`} style={{zIndex:1}}>
         <div className="flex  items-center pb-3 border-b border-gray-300 flex-row">
         <FaComments className='mr-3 text-black' size={35} />
           <h2>Features</h2>

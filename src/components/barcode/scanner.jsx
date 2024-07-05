@@ -42,7 +42,7 @@ const MainScanner = () => {
         <div>
         <button  className="border border-black bg-red-500 text-black p-2 m-1 w-28 rounded-sm " onClick={handlePause}>Scan Now</button>
         </div>
-        <div className="bg-white shadow-md -z-0">
+        <div className="relative">
         <Scanner
         formats={[
           'qr_code',
@@ -73,6 +73,12 @@ const MainScanner = () => {
           torch: true,
           finder: true,
           tracker: getTracker(),
+          boundingBox: {
+            x: 0,
+            y: 0,
+            width: 0,
+            height: 0
+          },
           zoom: true,
         }}
         allowMultiple={true}
@@ -82,8 +88,12 @@ const MainScanner = () => {
         onScan={(detectedCodes)=>{
           console.log(detectedCodes)
           setDetectedCode(detectedCodes[0]) 
+          
         }}
-        classNames="border border-gray-300 rounded"
+styles={{
+  container:{border:'none',outline:'none'},
+  video:{border:'none',outline:'none'}
+}}
       />
         </div>
       </div>
