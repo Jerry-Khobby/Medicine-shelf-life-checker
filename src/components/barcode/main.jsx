@@ -1,8 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import BarcodeScanner from "./scanner"; // Adjust the import path as needed
+import { useAppSelector } from "@/lib/hooks";
 
 const MainScanner = () => {
+  const barcode=useAppSelector((state) =>state.barcode.barcodeEAN_13)
   const [openScanner, setOpenScanner] = useState(false);
 
   const handleScanner = () => {
@@ -24,6 +26,7 @@ const MainScanner = () => {
           </div>
         )}
       </div>
+      <h1>{barcode}</h1>
     </div>
   );
 };

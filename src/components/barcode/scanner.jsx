@@ -14,7 +14,7 @@ const styles = {
   }
 };
 
-const BarcodeScanner = () => {
+const MainScanner = () => {
   const dispatch =useAppDispatch();
   const devices = useDevices();
   const [deviceId, setDeviceId] = useState(null);
@@ -101,4 +101,4 @@ const BarcodeScanner = () => {
   );
 };
 
-export default BarcodeScanner;
+export default MainScanner;
