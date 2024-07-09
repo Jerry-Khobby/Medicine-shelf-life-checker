@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { Scanner, useDevices, outline, boundingBox, centerText } from '@yudiel/react-qr-scanner';
+import { useAppDispatch } from "@/lib/hooks";
+import { searchThrough } from "@/lib/slice";
 
 const styles = {
   container: {
@@ -12,11 +14,11 @@ const styles = {
   }
 };
 
-const MainScanner = () => {
+const BarcodeScanner = () => {
+  const dispatch =useAppDispatch();
   const devices = useDevices();
   const [deviceId, setDeviceId] = useState(null);
   const [tracker, setTracker] = useState("centerText");
-  const [pause, setPause] = useState(true);
   const [detectedCode, setDetectedCode] = useState('');
 
 
@@ -34,16 +36,10 @@ const MainScanner = () => {
     }
   }
 
-  const handlePause = () => {
-    setPause(false);
-  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center flex-col mt-32">
+    <div className="min-h-screen flex items-center justify-start flex-col  mt-10">
       <div className="flex items-center justify-center flex-col ">
-        <div>
-          <button className="border border-black bg-red-500 text-black p-2 m-1 w-28 rounded-sm" onClick={handlePause}>Scan Now</button>
-        </div>
         <div className="relative">
           <Scanner
             formats={[
@@ -85,13 +81,13 @@ const MainScanner = () => {
             }}
             allowMultiple={true}
             scanDelay={2000}
-            paused={pause}
+            paused={false}
             constraints={{ video: { deviceId: deviceId ? { exact: deviceId } : undefined } }}
             onScan={(detectedCodes) => {
               console.log(detectedCodes);
               if (detectedCodes.length > 0) {
-                setDetectedCode(detectedCodes[0]?.barcodeEAN_13 || '');
-                setPause(true); // Pause the scanner  // Submit the detected code
+                const scannedCode = detectedCodes[0];
+                dispatch(searchThrough({barcode:scannedCode}));
               }
             }}
             styles={{
@@ -105,4 +101,4 @@ const MainScanner = () => {
   );
 };
 
-export default MainScanner;
+export default BarcodeScanner;

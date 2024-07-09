@@ -1,5 +1,5 @@
 import React from 'react'
-import MainScanner from '@/components/barcode/scanner';
+import MainScanner from '@/components/barcode/main';
 
 
 const BarcodeScanner = () => {
