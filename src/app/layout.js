@@ -7,7 +7,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ProductsLoaderSkeleton from '@/components/skeleton'; // Import your loader skeleton component
 import FooterComponent from '@/components/homepage/footer';
-import StoreProvider from "./Provider";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -49,7 +49,6 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <StoreProvider>
       <body className={inter.className}>
         {loading && isMobileView ? ( // Render loader skeleton if loading and isMobileView is true
           <ProductsLoaderSkeleton />
@@ -67,7 +66,6 @@ export default function RootLayout({ children }) {
           </div>
         )}
       </body>
-      </StoreProvider>
     </html>
   );
 }
